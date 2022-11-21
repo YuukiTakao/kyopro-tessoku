@@ -2,9 +2,9 @@
 
 int	main(void)
 {
-	int	n;
+	int		n;
 	char	ans[10+1]; // 0 - 9 - 10(null)
-	int	binary[10];
+	int		binary[10];
 
 	scanf("%d", &n);
 	int i;
