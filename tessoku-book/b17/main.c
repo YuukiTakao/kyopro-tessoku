@@ -48,13 +48,11 @@ int	main(void)
 	answers = calloc(N+1, sizeof(int));
 
 	int k = N;
-	int	i = 1;
-	while (1)
+	int	i;
+	answers[1] = k;
+	for (i = 2; ; i++)
 	{
-		answers[i] = k;
 		// printf("ans[%d]=%d dp[k-2]=%d abs(%d-%d)=%d\n", i, answers[i], dp[k-2], h[k-2], h[k], abs(h[k-2]-h[k]));
-		if (k <= 1)
-			break;
 		if (dp[k-2] + abs(h[k-2]-h[k]) == dp[k])
 		{
 			k -=2;
@@ -65,7 +63,9 @@ int	main(void)
 			k--;
 			// printf("minus 1\n");
 		}
-		i++;
+		answers[i] = k;
+		if (k == 1)
+			break;
 	}
 
 	printf("%d\n", i);
