@@ -1,14 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-long long	yt_pow(const int n, const int pow)
+typedef long long tdarray_t;
+
+void	tdarray(tdarray_t **td_array, int N, int W, tdarray_t init)
 {
-	long long ret = n;
-	for (int i = 0; i < pow; i++)
+	for (int i = 0; i <= N; i++)
 	{
-		ret *= pow;
+		td_array[i] = calloc(W+1, sizeof(long long));
+		for (int j = 0; j <= W; j++)
+		{
+			td_array[i][j] =  init;
+		}
 	}
-	return ret;
 }
 
 long long	max(const long long a, const long long b)
@@ -36,19 +40,10 @@ int	main(void)
 		// printf("%d %d\n", ws[i], vs[i]);
 	}
 
-	long long **dp;
-
-	dp = calloc(N+1, sizeof(long long *));
-	// long long a = -1;
-	for (int i = 0; i <= N; i++)
-	{
-		dp[i] = calloc(W+1, sizeof(long long));
-		for (int j = 0; j <= W; j++)
-		{
-			dp[i][j] =  -100000000;
-			// printf("%lld\n", dp[i][j]);
-		}
-	}
+	tdarray_t **dp;
+	
+	dp = calloc(N+1, sizeof(tdarray_t *));
+	tdarray(dp, N, W, (tdarray_t)-1000000000);
 	dp[0][0] = 0;
 	
 	for (int i = 1; i <= N; i++)
@@ -67,7 +62,7 @@ int	main(void)
 		// printf("\n");
 	}
 
-	long long ans = 0;
+	tdarray_t ans = 0;
 	for (int i = 1; i <= N; i++) {
 		for (int j = 1; j <= W; j++)
 		{
