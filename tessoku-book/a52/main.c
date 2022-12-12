@@ -46,12 +46,10 @@ void	push_back(vector *self, char *elem) {
 			printf("failed push_back in realloc...\n");
 		}
 	}
-	// printf("self->len=%d strlen=%lu elem=%s\n",self->len,strlen(elem), elem);
 	self->array[self->len] = calloc(strlen(elem)+9, sizeof(char));
 	self->array[self->len] = elem;
 	self->len++;
 }
-
 
 int	main(void)
 {
