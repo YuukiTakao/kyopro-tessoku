@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-typedef struct item_t
-{
+typedef struct item_t {
 	int	value;
 	int	priority;
 	int	index;
@@ -14,8 +12,7 @@ typedef struct vector {
 	size_t	cap;
 	size_t	front_idx;
 }	vector;
-
-int	Len(vector *pq) {
+int	len(vector *pq) {
 	return pq->len;
 }
 vector	*new(int cap) {
@@ -99,27 +96,27 @@ int down(vector *pq, int i0, int n) {
 }
 void	init(vector *pq) {
 	// heapify
-	int n = Len(pq);
+	int n = len(pq);
 	for (int i = n/2 - 1; i >= 0; i--) {
 		down(pq, i, n);
 	}
 }
 void	heap_push(vector *pq, int x) {
 	push_back(pq, x);
-	up(pq, Len(pq)-1);
+	up(pq, len(pq)-1);
 }
 void	heap_fix(vector *pq, int i) {
-	if (! down(pq, i, Len(pq))) {
+	if (! down(pq, i, len(pq))) {
 		up(pq, i);
 	}
 }
 void	update(vector *pq, int value) {
 	pq->items[pq->len].value = value;
-	heap_fix(pq, Len(pq)-1);
+	heap_fix(pq, len(pq)-1);
 }
 item_t	pop (vector *pq) {
 	vector *old = pq;
-	int n = Len(old);
+	int n = len(old);
 	item_t item = old->items[n-1];
 	item_t *old_item = &old->items[n-1];  // avoid memory leak
 	old_item = NULL;
@@ -130,13 +127,12 @@ item_t	pop (vector *pq) {
 	return item;
 }
 item_t	heap_pop(vector *pq) {
-	int n = Len(pq) - 1;
+	int n = len(pq) - 1;
 	swap(pq, 0, n);
 	down(pq, 0, n);
 	return pop(pq);
 }
-int	main(void)
-{
+int	main(void) {
 	int Q;
 	scanf("%d", &Q);
 
