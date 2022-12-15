@@ -3,9 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-
 int int_compare(const void * n1, const void * n2) {
 	// asc
 	if (*(int *)n1 > *(int *)n2)
