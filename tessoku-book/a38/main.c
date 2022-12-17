@@ -2,9 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef	long long ll;
-
-ll	min_int(const ll a, const ll b)
+int	min_int(const int a, const int b)
 {
 	if (a <= b)
 		return (a);
@@ -17,7 +15,7 @@ int	main(void)
 	scanf("%d%d", &D, &N);
 	// printf("%d %d\n", D, N);
 
-	long long csum[D+5];
+	int csum[D+5];
 	// csum = calloc(D+1, sizeof(int));
 	memset(csum, 25, sizeof(csum));
 	
@@ -36,11 +34,11 @@ int	main(void)
 			// printf("j=%d csum[%d]=%d H=%d\n", j, csum[j], j, H);
 		}
 	}
-	long long ans = 0;
+	int ans = 0;
 	for (int i = 1; i <= D; i++) {
 		// printf("i=%d csum[i]=%d\n", i, csum[i]);
 		ans += csum[i];
 	}
-	printf("%lld\n", ans);
+	printf("%d\n", ans);
 	return (0);
 }
