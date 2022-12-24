@@ -38,7 +38,7 @@ void	unite(UF *uf, int u, int v) {
 		uf->size[RootU] = uf->size[RootV] + uf->size[RootU];
 	}
 }
-int	same(UF *uf, int u, int v) {
+int	uf_same(UF *uf, int u, int v) {
 	return root(uf, u) == root(uf, v);
 }
 
@@ -59,7 +59,7 @@ int	main(void)
 		if (q == 1) {
 			unite(uf, u, v);
 		} else if (q == 2) {
-			if (same(uf, u, v))
+			if (uf_same(uf, u, v))
 				printf("Yes\n");
 			else
 				printf("No\n");
