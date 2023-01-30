@@ -4,3 +4,4 @@ sample*.out
 a.out
 *.dSYM
 .vscode
+main
